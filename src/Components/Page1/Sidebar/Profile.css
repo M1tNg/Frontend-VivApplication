@@ -1,0 +1,26 @@
+* {
+    margin: 0px;
+}
+
+.profile {
+    display: flex;
+    width: 420px;
+    height: 120px;
+    align-items: center;
+    margin: 30px 40px 15px;
+}
+
+.profile img {
+    width:100px;
+    height: 100px;
+    margin-left: 15px;
+}
+
+.profile h1 {
+   margin-left: 30px;
+   font-family: 'Varela Round', sans-serif;
+   font-style: normal;
+   font-weight: 500;
+   font-size: 22px;
+   color: #572e2ef0;
+}

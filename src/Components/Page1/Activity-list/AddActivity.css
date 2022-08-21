@@ -1,0 +1,34 @@
+* {
+    margin: 0px;
+}
+
+.AddAct {
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.AddAct h1 {
+    font-family: 'Varela Round', sans-serif;
+    text-align: center;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    color: #572e2ec0;
+}
+
+.AddAct button{
+    border: 0;
+    background: #b9f2ffb6;
+    width: 150px;
+    height: 60px;
+    border-radius: 15px;
+    filter: drop-shadow(8px 6px 6px rgba(0, 0, 0, 0.15));
+    cursor: pointer;
+}
+
+.AddAct button:hover {
+    background: #b9f2ffd7;
+}
+

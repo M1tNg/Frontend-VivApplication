@@ -1,0 +1,45 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.summary-card{
+    background-color: #FD9D9D;
+    width: 450px;
+    height: 614px;
+    border-radius: 20px;
+    position: relative;
+}
+
+.summary-card .container-card{
+    padding: 0 30px;
+    position: absolute;
+
+}
+
+.summary-card .card{
+    margin: 32px 0;
+    width: 389px;
+    height: 114px;
+    background-color: #F1F1F1;
+    border-radius: 20px;
+    box-shadow: 5px 5px 4px rgb(0 0 0 / 0.2);
+}
+
+
+.summary-card .card .card-content{
+    padding: 16px;
+}
+
+.summary-card .card .card-content h3{
+    margin-bottom: 15px;
+}
+
+.summary-card .card .card-content p{
+    line-height: 1.5em;
+}
+
+
+
+
