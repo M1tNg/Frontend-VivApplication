@@ -4,14 +4,16 @@ import summaryLogo from './images/summaryicon.png'
 
 const Summary = () => {
     return(
+        
         <div className='Summary'>
            <Link to="/summary-Month"> 
-                <button>
+                <a>
                     <img src={summaryLogo}></img>
                     <strong>Summary</strong>
-                </button>
+                </a>
             </Link>
         </div>
+    
     )
 }
 

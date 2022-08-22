@@ -5,8 +5,8 @@ import Page1 from '../Page1/Page1'
 import EditAct from "../EditActivity/EditActivity";
 import CreateAct from "../CreateActivity/CreateActivity";
 import Calendar from "../Calendar/Calendar";
-import SummaryItemMonth from "../summaryItem_month/summaryItem_month"
-import SummaryItemWeek from "../summaryItem_week/SummaryItem";
+import PieChartMonth from '../Piechart/Piechart_month';
+// import SummaryItemWeek from "../summaryItem_week/SummaryItem";
 
 
 function App() {
@@ -19,8 +19,8 @@ function App() {
         <Route path="/create" element={<CreateAct />} />
         <Route path="/edit/:id" element={<EditAct />} />
         <Route path="/schedule" element={<Calendar />} />
-        <Route path="/summary-Month" element={<SummaryItemMonth />} />
-        <Route path="/summary-Week" element={<SummaryItemWeek />} />
+        <Route path="/summary-Month" element={<PieChartMonth />} />
+        {/* <Route path="/summary-Week" element={<SummaryItemWeek />} /> */}
       </Routes>
     </div>
   );

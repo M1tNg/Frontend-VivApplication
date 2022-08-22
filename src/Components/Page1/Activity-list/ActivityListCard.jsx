@@ -18,7 +18,7 @@ const ActivityListCard = () => {
     const [currentItems, setCurrentItems] = useState([]);
     const [pageCount, setPageCount] = useState(0);
     const [itemOffset, setItemOffset] = useState(0);
-    const itemsPerPage = 5
+    const itemsPerPage = 4;
 
 
     const [activity, setActivity] = useState([]);
@@ -26,7 +26,7 @@ const ActivityListCard = () => {
   //Fetch data from database to show at card
   const fetchData = () => {
     axios
-    .get(`https://backend-viv-application.vercel.app/activities`)
+    .get(`${import.meta.env.VITE_API_URL}/activities`)
     .then((res) => {
       setActivity(res.data)
     })
@@ -89,7 +89,7 @@ const ActivityListCard = () => {
     //req to api to delete data
     const deleteBlog = (id) => {
         axios
-        .delete(`https://backend-viv-application.vercel.app/activities/${id}`)
+        .delete(`${import.meta.env.VITE_API_URL}/activities/${id}`)
         .then(()=>{
         //popup for show it complete
         Swal.fire(

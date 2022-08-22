@@ -1,7 +1,8 @@
-import './Weeklystat.css';
 import React, { useCallback, useState, useEffect } from "react";
 import { PieChart, Pie, Sector, Cell, ResponsiveContainer } from "recharts";
 import axios from "axios";
+import './PiechartMonth.css';
+
 
 export const renderActiveShape = (props) => {
   const RADIAN = Math.PI / 180;
@@ -29,9 +30,9 @@ export const renderActiveShape = (props) => {
   const textAnchor = cos >= 0 ? "start" : "end";
 
   const cal = (value) => {
-    const h = Math.floor(value/60)
+    const h = Math.round(value/60)
     const m = Math.round(value%60)
-    return (`${h} hrs ${m} mins`)
+    return (`${h} hours ${m} minutes`)
   }
 
   return (
@@ -67,12 +68,21 @@ export const renderActiveShape = (props) => {
         y={ey}
         textAnchor={textAnchor}
         fill="#333"
-      >{`${payload.name}`}</text>
+      >{`${payload.name}, Total time : ${cal(value)}`}</text>
+      <text
+        x={ex + (cos >= 0 ? 1 : -1) * 12}
+        y={ey}
+        dy={18}
+        textAnchor={textAnchor}
+        fill="#999"
+      >
+        {`(Rate ${(percent * 100).toFixed(2)}%)`}
+      </text>
     </g>
   );
 };
 
-export default function Weeklystat() {
+export default function PieChartMonth() {
   const [activeIndex, setActiveIndex] = useState(0);
   const [summary, setSummary] = useState([]);
 
@@ -86,11 +96,11 @@ export default function Weeklystat() {
   //Fetch data from database to show schedule
   const fetchData = () => {
     axios
-    .post(`${import.meta.env.VITE_API_URL}/activities/summaryMonth`)
+    .post(`https://backend-viv-application.vercel.app/activities/summaryMonth`)
     .then((res) => {
       const datas = res.data;
       const summary = datas.map((data) => ({
-        week: data._id.week,
+        month: data._id.month,
         type: data._id.type,
         hour: (data.total_hour),
         minute: data.total_minute,
@@ -118,7 +128,7 @@ export default function Weeklystat() {
   ))
 
   const cal = (value) => {
-    const h = Math.floor(value/60)
+    const h = Math.round(value/60)
     const m = Math.round(value%60)
     return (`${h} hours ${m} minutes`)
   }
@@ -137,8 +147,9 @@ export default function Weeklystat() {
       </text>
     );
   };
-  return (
 
+  return (
+    <div className="p-container">
       <div  className="pieChart">
         <ResponsiveContainer>
         <PieChart>
@@ -158,8 +169,17 @@ export default function Weeklystat() {
         </PieChart>
         </ResponsiveContainer>
       </div>
-
-    )
+      <div className="summary-card">
+                {summary.map((data, index) => (
+                    <div className="card" key={index}>
+                        <div className="card-content" key={index}>
+                                <h3>{`Month : ${data.month}`}</h3>
+                                <p>{`Type of actvity : ${data.type}`}</p>
+                                <p>{`Total time hour : ${cal(data.total)}`}</p>
+                        </div>
+                    </div>
+                  ))}
+        </div>
+    </div>
+  );
 }
-
-

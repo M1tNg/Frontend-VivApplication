@@ -9,18 +9,19 @@
     align-items: center;
     justify-content: center;
     filter: drop-shadow(8px 6px 6px rgba(0, 0, 0, 0.15));
+    margin-bottom: 22px;
 }
 
-.Summary button{
+.Summary a{
     display: flex;
     justify-content: center;
     align-items: center;
     width: 420px;
     height: 80px;
     border-radius: 25px;
-    color: #f1f1f1;
+    background-color: #f1f1f1;
     border: none !important;
-    margin: 15px 40px;
+    margin: 15px 40px ;
 }
 
 .Summary img {
