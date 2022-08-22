@@ -6,6 +6,7 @@
     background: #fd9d9dcc;
     border-radius: 25px;
     margin: 70px 20px 70px 100px;
+    filter: drop-shadow(8px 6px 6px rgba(0, 0, 0, 0.15));
 }
 
 
