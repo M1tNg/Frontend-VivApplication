@@ -18,8 +18,7 @@ const ActivityListCard = () => {
     const [currentItems, setCurrentItems] = useState([]);
     const [pageCount, setPageCount] = useState(0);
     const [itemOffset, setItemOffset] = useState(0);
-    const itemsPerPage = 4;
-
+    const itemsPerPage = 5;
 
     const [activity, setActivity] = useState([]);
 
