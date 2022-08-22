@@ -154,7 +154,7 @@ const MyCalendar = () => {
             defaultDate={new Date()}
             defaultView="month"
             events={myEvents}
-            style={{ height: "50vh", width: "50vw" }}
+            style={{ height: "60vh", width: "60vw" }}
             onSelectEvent={onSelectEvent}
             popup={true}
           />
