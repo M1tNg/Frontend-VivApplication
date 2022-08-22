@@ -7,3 +7,22 @@ div.pieChart {
     margin:0 auto;
     height: 300px;
 }
+
+.weekBox {
+    display: flex;
+    width: 220px;
+    height: 40px;
+    align-items: center;
+    justify-content: center;
+    margin: 0px auto ;
+    background-color: #F1F1F1;
+    border-radius: 10px;
+}
+
+.weekBox  h1 {
+    font-family: 'Varela Round', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 30px;
+    color: #572e2ef0;
+ }

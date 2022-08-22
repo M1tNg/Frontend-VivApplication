@@ -140,6 +140,9 @@ export default function Weeklystat() {
   return (
 
       <div  className="pieChart">
+        <div className='weekBox'>
+          <h1>Weekly statistic</h1>
+        </div>
         <ResponsiveContainer>
         <PieChart>
           <Pie

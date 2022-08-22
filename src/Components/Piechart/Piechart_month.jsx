@@ -1,6 +1,7 @@
 import React, { useCallback, useState, useEffect } from "react";
 import { PieChart, Pie, Sector, Cell, ResponsiveContainer } from "recharts";
 import axios from "axios";
+import ReactPaginate from "react-paginate";
 import './PiechartMonth.css';
 
 
@@ -86,6 +87,26 @@ export default function PieChartMonth() {
   const [activeIndex, setActiveIndex] = useState(0);
   const [summary, setSummary] = useState([]);
 
+  const [currentItems, setCurrentItems] = useState([]);
+    const [pageCount, setPageCount] = useState(0);
+    const [itemOffset, setItemOffset] = useState(0);
+    const itemsPerPage = 4;
+
+
+    useEffect(() => {
+      // Fetch items from another resources.
+      const endOffset = itemOffset + itemsPerPage;
+      console.log(`Loading items from ${itemOffset} to ${endOffset}`);
+      setCurrentItems(summary.slice(itemOffset, endOffset));
+      setPageCount(Math.ceil(summary.length / itemsPerPage));
+    }, [itemOffset, itemsPerPage, summary]);
+  
+    // Invoke when user click to request another page.
+    const handlePageClick = (event) => {
+      const newOffset = (event.selected * itemsPerPage) % summary.length;
+      setItemOffset(newOffset);
+    };
+
   const onPieEnter = useCallback(
     (_, index) => {
       setActiveIndex(index);
@@ -96,7 +117,7 @@ export default function PieChartMonth() {
   //Fetch data from database to show schedule
   const fetchData = () => {
     axios
-    .post(`https://backend-viv-application.vercel.app/activities/summaryMonth`)
+    .post(`${import.meta.env.VITE_API_URL}/activities/summaryMonth`)
     .then((res) => {
       const datas = res.data;
       const summary = datas.map((data) => ({
@@ -128,7 +149,7 @@ export default function PieChartMonth() {
   ))
 
   const cal = (value) => {
-    const h = Math.round(value/60)
+    const h = Math.floor(value/60)
     const m = Math.round(value%60)
     return (`${h} hours ${m} minutes`)
   }
@@ -162,7 +183,7 @@ export default function PieChartMonth() {
             labelLine={false}
             label={renderCustomizedLabel}
             >
-              {data.map((entry, index) => (
+              {currentItems.map((entry, index) => (
                   <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
                 ))}
           </Pie>
@@ -170,7 +191,7 @@ export default function PieChartMonth() {
         </ResponsiveContainer>
       </div>
       <div className="summary-card">
-                {summary.map((data, index) => (
+                {currentItems.map((data, index) => (
                     <div className="card" key={index}>
                         <div className="card-content" key={index}>
                                 <h3>{`Month : ${data.month}`}</h3>
@@ -179,7 +200,21 @@ export default function PieChartMonth() {
                         </div>
                     </div>
                   ))}
+                  <ReactPaginate
+        breakLabel="..."
+        nextLabel="next >"
+        onPageChange={handlePageClick}
+        pageRangeDisplayed={3}
+        pageCount={pageCount}
+        previousLabel="< previous"
+        renderOnZeroPageCount={null}
+        containerClassName= "pagegination"
+        pageLinkClassName="page-num"
+        previousClassName="page-num"
+        activeClassName="activePage"
+      />
         </div>
+        
     </div>
   );
 }

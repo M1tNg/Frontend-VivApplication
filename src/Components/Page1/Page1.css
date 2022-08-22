@@ -17,7 +17,7 @@ justify-content: center;
     display: none;
 }
 
-@media only screen and (max-width: 1500px) {
+/* @media only screen and (max-width: 1500px) {
     div.body {
         display: flex;
         flex-direction: column;
@@ -52,4 +52,4 @@ justify-content: center;
         display: flex;
         justify-content: center;
     }
-}
+} */

@@ -7,7 +7,7 @@
     width: 420px;
     height: 120px;
     align-items: center;
-    margin: 30px 40px 15px;
+    margin: 30px 40px 0px;
 }
 
 .profile img {
@@ -24,3 +24,19 @@
    font-size: 22px;
    color: #572e2ef0;
 }
+
+.weekly {
+    display: flex;
+    width: 420px;
+    height: 120px;
+    align-items: center;
+    margin: 30px 40px 0px;
+}
+.weekly h1{
+    margin-left: 30px;
+    font-family: 'Varela Round', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 22px;
+    color: #572e2ef0;
+ }
