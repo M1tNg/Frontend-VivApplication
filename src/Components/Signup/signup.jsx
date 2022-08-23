@@ -27,7 +27,7 @@ const Signup = () => {
 		await axios.post((`https://back-end-viv-application.vercel.app/users`), { name, lastname, email, password })
 		.then(() => {
 			Swal.fire(
-				'Login success!',
+				'Signup success!',
 				'Thank you for register.',
 				'success'
 			)
