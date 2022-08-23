@@ -1,8 +1,9 @@
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useNavigate  } from "react-router-dom";
 import "./CreateActivity.css";
 import axios from "axios";
 import Swal from 'sweetalert2';
+import { getToken } from "../services/auth";
 
 const CreateAct = () => {
   const {
@@ -11,11 +12,13 @@ const CreateAct = () => {
     formState: { errors },
   } = useForm();
 
+    //for redirect to another page
+    const navigate = useNavigate();
 
   const onSubmit = (data) => {
     console.log(data)
     axios
-    .post(`${import.meta.env.VITE_API_URL}/activities/create`, data, { headers: { 'Content-Type': 'application/json' }})
+    .post(`https://back-end-viv-application.vercel.app/users/me/activities/create`, data, { headers: {authorization: `Bearer ${getToken()}`}})
     .then((res) => {
       console.log(res.data)
       //popup to show it been save
@@ -24,7 +27,7 @@ const CreateAct = () => {
           'Your data had been saved.',
           'success',
       )
-    .then(()=> document.addEventListener("click", window.location = "/"))
+    .then(()=>navigate("/"))
     })
     .catch((err) => {
         //popup to show if error
@@ -74,7 +77,7 @@ const CreateAct = () => {
 
         <div className="typeD">
           <h2>Description </h2>
-          <textarea {...register("description")} placeholder="Description" />
+          <textarea maxLength="150" {...register("description")} placeholder="Description" />
         </div>
 
         <div className="btn">

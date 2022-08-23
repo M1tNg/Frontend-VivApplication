@@ -1,13 +1,17 @@
 import { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import "./EditAct.css"
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams,useNavigate } from "react-router-dom";
 import axios from 'axios'
 import Swal from "sweetalert2";
+import { getToken } from "../services/auth";
 
 const EditAct = () => {
 
   const [state, setState] = useState([]);
+
+  //for redirect to another page
+  const navigate = useNavigate();
 
   //For format date to yyyy-mm-dd
   function padTo2Digits(num) {
@@ -39,7 +43,7 @@ const EditAct = () => {
   //Get each data from id
   useEffect(()=>{
     axios
-    .get(`${import.meta.env.VITE_API_URL}/activities/${id}`)
+    .get(`https://back-end-viv-application.vercel.app/users/me/activities/${id}`, {headers: {authorization: `Bearer ${getToken()}`}})
     .then((res) => {
       const {ActType,hour,minute,date,description } = res.data
       setState({...state,ActType,hour,minute,date,description })
@@ -63,16 +67,15 @@ const EditAct = () => {
   const onSubmit = (data) => {
     console.log(data)
     axios
-    .put(`${import.meta.env.VITE_API_URL}/activities/${id}`, data, { headers: { 'Content-Type': 'application/json' }})
-    .then((res) => {
-      console.log(res.data)
+    .put(`https://back-end-viv-application.vercel.app/users/me/activities/${id}`, data, { headers: {authorization: `Bearer ${getToken()}`}})
+    .then(() => {
       //popup to show it been save
       Swal.fire(
           'Great!',
           'Your data had been edited.',
           'success',
       )
-    .then(()=> document.addEventListener("click", window.location = "/"))
+    .then(()=>navigate("/"))
     })
     .catch((err) => {
         //popup to show if error
@@ -121,11 +124,11 @@ const EditAct = () => {
 
         <div className="type3">
           <h2>Description</h2>
-          <textarea {...register("description")}  />
+          <textarea maxLength="150"{...register("description")}  />
         </div>
 
         <div className="btn2">
-        <input type="submit" value="Edit" />
+        <input type="submit" value="Save" />
         <Link to="/" ><input type="submit" value="Cancel" /></Link>
         </div>
       </form>

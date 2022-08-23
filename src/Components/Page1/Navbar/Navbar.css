@@ -43,19 +43,12 @@ a {
     margin: 0px 20px;
 }
 
-#scheduleIcon {
-margin: 0 20px;
-height: 35px;
-width: 35px;
-opacity: 0.5;
-}
-
-#text-schedule {
+#text-schedule, #text-summary, #text-tip {
     margin: 0px;
     font-family: 'Varela Round', sans-serif;
     font-style: normal;
     font-weight: 500;
-    font-size: 24px;
+    font-size: 20px;
     display: flex;
     align-items: center;
     text-align: center;
@@ -66,48 +59,42 @@ opacity: 0.5;
     color: #572e2e;
 }
 
-#text-schedule:hover {
+#text-schedule:hover, #text-summary:hover, #text-tip:hover {
     color: #572e2e;
 }
 
 #scheduleIcon:hover {
     opacity: 0.7;
-    }
-
-
-/* hidden icons */
-
-#restip, #ressummary {
-    display: none;
 }
 
-#tipIcon, #summaryIcon {
+.login .logout {
+    width: auto;
+}
+
+.login button, .logout button {
+    background: transparent;
+    border: none;
+    font-family: 'Varela Round', sans-serif;
+    padding: 10px 10px;
+}
+
+#loginIcon {
+    margin: 0 20px;
+    height: 25px;
+    width: 30px;
+    opacity: 0.5;
+}
+
+#loginIcon:hover {
+    opacity: 0.7;
+}
+
+#tipIcon, #summaryIcon, #scheduleIcon {
     margin: 0 20px;
     height: 35px;
     width: 35px;
     opacity: 0.5;
 }
 
-#summaryIcon:hover {
-    opacity: 0.7;
-    }
 
-/* tablet version */
-@media only screen and (max-width: 1500px) {
-    #text-viv {
-       display: none;
-    }
 
-    #text-schedule {
-        display: none;
-    }
-
-    #scheduleIcon {
-        margin: 0;
-    }
-
-    #restip, #ressummary {
-        display: contents;
-    }
-
-}

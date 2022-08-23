@@ -11,6 +11,7 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import Swal from "sweetalert2";
 import ReactPaginate from "react-paginate";
+import { getToken } from "../../services/auth";
 
 
 const ActivityListCard = () => {
@@ -25,7 +26,7 @@ const ActivityListCard = () => {
   //Fetch data from database to show at card
   const fetchData = () => {
     axios
-    .get(`${import.meta.env.VITE_API_URL}/activities`)
+    .get(`https://back-end-viv-application.vercel.app/users/me/activities`, {headers: {authorization: `Bearer ${getToken()}`}})
     .then((res) => {
       setActivity(res.data)
     })
@@ -88,7 +89,7 @@ const ActivityListCard = () => {
     //req to api to delete data
     const deleteBlog = (id) => {
         axios
-        .delete(`${import.meta.env.VITE_API_URL}/activities/${id}`)
+        .delete(`https://back-end-viv-application.vercel.app/activities/${id}`, {headers: {authorization: `Bearer ${getToken()}`}})
         .then(()=>{
         //popup for show it complete
         Swal.fire(

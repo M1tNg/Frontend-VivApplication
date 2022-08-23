@@ -2,7 +2,7 @@ import "./Sidebar.css";
 import Profile from "./Profile";
 import Summary from "./Summary";
 import Tips from "./Tips";
-import Weeklystat from "./Weeklystat";
+import Weeklystat from "../Weeklystat";
 
 const Sidebar = () => {
   return (

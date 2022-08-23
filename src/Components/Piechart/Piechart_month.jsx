@@ -3,6 +3,7 @@ import { PieChart, Pie, Sector, Cell, ResponsiveContainer } from "recharts";
 import axios from "axios";
 import ReactPaginate from "react-paginate";
 import './PiechartMonth.css';
+import { getToken } from "../services/auth";
 
 
 export const renderActiveShape = (props) => {
@@ -31,7 +32,7 @@ export const renderActiveShape = (props) => {
   const textAnchor = cos >= 0 ? "start" : "end";
 
   const cal = (value) => {
-    const h = Math.round(value/60)
+    const h = Math.floor(value/60)
     const m = Math.round(value%60)
     return (`${h} hours ${m} minutes`)
   }
@@ -117,10 +118,12 @@ export default function PieChartMonth() {
   //Fetch data from database to show schedule
   const fetchData = () => {
     axios
-    .post(`${import.meta.env.VITE_API_URL}/activities/summaryMonth`)
+    .get(`https://back-end-viv-application.vercel.app/users/me/activities/summaryMonth`, 
+    {headers: {authorization: `Bearer ${getToken()}`}})
     .then((res) => {
       const datas = res.data;
       const summary = datas.map((data) => ({
+        user: data._id.user,
         month: data._id.month,
         type: data._id.type,
         hour: (data.total_hour),

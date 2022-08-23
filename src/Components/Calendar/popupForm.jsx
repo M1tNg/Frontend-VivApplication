@@ -25,7 +25,7 @@ const PopupForm = () => {
 
     const sendData = () => {
         axios
-        .post(`${import.meta.env.VITE_API_URL}/schedule/create`, {title, start, end})
+        .post(`https://back-end-viv-application.vercel.app/schedule/create`, {title, start, end})
         .then((res) => {
             console.log(res.data)
             //popup to show it been save

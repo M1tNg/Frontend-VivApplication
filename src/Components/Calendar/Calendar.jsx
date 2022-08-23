@@ -11,6 +11,7 @@ import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
 import './popupForm.css'
 
+import { getToken } from '../services/auth';
 
 
 const MyCalendar = () => {
@@ -19,7 +20,7 @@ const MyCalendar = () => {
   //Fetch data from database to show schedule
   const fetchData = () => {
     axios
-    .get(`${import.meta.env.VITE_API_URL}/schedule`)
+    .get(`https://back-end-viv-application.vercel.app/users/me/schedule`, {headers: {authorization: `Bearer ${getToken()}`}})
     .then((res) => {
       setEvents(res.data)
     })
@@ -61,7 +62,7 @@ const MyCalendar = () => {
       ).then((result)=>{
         if(result.isConfirmed){
           axios
-          .delete(`${import.meta.env.VITE_API_URL}/schedule/${myEvents._id}`)
+          .delete(`https://back-end-viv-application.vercel.app/users/me/schedule/${myEvents._id}`, {headers: {authorization: `Bearer ${getToken()}`}})
           .then(()=>{
           //popup for show it complete
           Swal.fire(
@@ -99,7 +100,7 @@ const MyCalendar = () => {
 
   const sendData = () => {
       axios
-      .post(`${import.meta.env.VITE_API_URL}/schedule/create`, {title, start, end})
+      .post(`https://back-end-viv-application.vercel.app/users/me/schedule/create`, {title, start, end}, {headers: {authorization: `Bearer ${getToken()}`}})
       .then((res) => {
           console.log(res.data)
           //popup to show it been save
