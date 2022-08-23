@@ -67,7 +67,7 @@ const EditAct = () => {
   const onSubmit = (data) => {
     console.log(data)
     axios
-    .put(`https://back-end-viv-application.vercel.app/users/me/activities/${id}`, data, { headers: {authorization: `Bearer ${getToken()}`}})
+    .patch(`https://back-end-viv-application.vercel.app/users/me/activities/${id}`, data, { headers: {authorization: `Bearer ${getToken()}`}})
     .then(() => {
       //popup to show it been save
       Swal.fire(
