@@ -31,7 +31,7 @@ const Signup = () => {
 				'Thank you for register.',
 				'success'
 			)
-			navigate("/login");
+			navigate("/");
 		})
 		.catch ((err) => {
 			setError(err.response.data.message)
@@ -43,7 +43,7 @@ const Signup = () => {
 			<div className={styles.signup_form_container}>
 				<div className={styles.left}>
 					<h1>Welcome Back</h1>
-					<Link to="/login">
+					<Link to="/">
 						<button type="button" className={styles.white_btn}>
 							Sign in
 						</button>

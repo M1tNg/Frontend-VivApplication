@@ -75,7 +75,7 @@ const EditAct = () => {
           'Your data had been edited.',
           'success',
       )
-    .then(()=>navigate("/"))
+    .then(()=>navigate("/dashboard"))
     })
     .catch((err) => {
         //popup to show if error
@@ -129,7 +129,7 @@ const EditAct = () => {
 
         <div className="btn2">
         <input type="submit" value="Save" style={{cursor: "pointer"}}/>
-        <Link to="/" ><input type="submit" value="Cancel" style={{cursor: "pointer"}}/></Link>
+        <Link to="/dashboard" ><input type="submit" value="Cancel" style={{cursor: "pointer"}}/></Link>
         </div>
       </form>
     </div>

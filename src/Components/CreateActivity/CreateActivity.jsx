@@ -27,7 +27,7 @@ const CreateAct = () => {
           'Your data had been saved.',
           'success',
       )
-    .then(()=>navigate("/"))
+    .then(()=>navigate("/dashboard"))
     })
     .catch((err) => {
         //popup to show if error
@@ -84,7 +84,7 @@ const CreateAct = () => {
           <button style={{border: "0px", cursor: "pointer"}}>
               <input type="submit" value="Add" style={{cursor: "pointer"}}/>
           </button>
-          <Link to="/">
+          <Link to="/dashboard">
               <input type="submit" value="Cancel" style={{cursor: "pointer"}}/>
           </Link>
         </div>

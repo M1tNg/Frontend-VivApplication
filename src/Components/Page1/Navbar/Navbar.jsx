@@ -15,7 +15,7 @@ const Navbar = () => {
 
     return (
         <div className="Navbar-container">
-            <NavLink to="/">
+            <NavLink to="/dashboard">
             <div className="logo">
                 
                 <img id="logoIcon" src={vivLogo} alt="logo icon" />

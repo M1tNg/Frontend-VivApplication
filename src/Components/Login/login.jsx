@@ -30,7 +30,7 @@ const Login = () => {
 					'Thank you for login.',
 					'success'
 				)
-				auth(res, ()=>{navigate("/")})
+				auth(res, ()=>{navigate("/dashboard")})
 			})
 			.catch ((err) => {
 				setError(err.response.data.message)

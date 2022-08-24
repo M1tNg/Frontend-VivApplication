@@ -16,13 +16,13 @@ function App() {
       <Navbar />
       <Routes>
       <Route element={<AdminRoute />}>
-        <Route path="/" element={<Page1 />} />
+        <Route path="/dashboard" element={<Page1 />} />
         <Route path="/create" element={<CreateAct />} />
         <Route path="/edit/:id" element={<EditAct />} />
         <Route path="/schedule" element={<Calendar />} />
         <Route path="/summary-Month" element={<PieChartMonth />} />
         </Route>
-        <Route path="/login" element={<Login />} />
+        <Route path="/" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
       </Routes>
     </div>
