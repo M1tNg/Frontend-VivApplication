@@ -214,6 +214,7 @@ export default function PieChartMonth() {
         containerClassName= "pagegination"
         pageLinkClassName="page-num"
         previousClassName="page-num"
+        nextClassName="page-num"
         activeClassName="activePage"
       />
         </div>
