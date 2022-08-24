@@ -39,7 +39,7 @@ const Navbar = () => {
                 
                         <div className="logout">
                             
-                            <button onClick={()=>logout(()=>navigate("/"))}>
+                            <button onClick={()=>logout(()=>navigate("/"))} style={{cursor: "pointer"}}>
                             
                             <img id="loginIcon" src={loginIcon} alt="logout icon" />
                                 <p>Logout</p>
@@ -49,10 +49,10 @@ const Navbar = () => {
                         </div>
                         
                     )}
-            {!getToken() && (
+            {/* {!getToken() && (
                         <div>
                         
-                            <button onClick={() => navigate("/login")}>
+                            <button onClick={() => navigate("/login")} style={{cursor: "pointer"}}>
                             
                             <img id="loginIcon" src={loginIcon} alt="logout icon" />
                                 <p>Login</p>
@@ -60,7 +60,7 @@ const Navbar = () => {
                             </button>
                         
                         </div>
-                    )}
+                    )} */}
 
         </div>
     );

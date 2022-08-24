@@ -74,7 +74,9 @@
 }
 
 .activePage {
-    background-color:rgb(171, 207, 255);
+    background-color:rgb(89, 206, 169);
+    border-radius: 10px;
+    filter: drop-shadow(4px 3px 3px rgba(0, 0, 0, 0.15));
 }
 
 .pagegination li{
@@ -85,4 +87,11 @@
 .pagegination li:hover{
     cursor: pointer;
     background-color: antiquewhite;
+    border-radius: 10px;
+}
+
+.page-num {
+    background-color: rgb(89, 206, 169);
+    border-radius: 10px;
+    filter: drop-shadow(8px 6px 6px rgba(0, 0, 0, 0.15));
 }

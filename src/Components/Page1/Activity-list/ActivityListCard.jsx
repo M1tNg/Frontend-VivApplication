@@ -128,6 +128,7 @@ const ActivityListCard = () => {
                     </div>
                     ))}
         </div> 
+        
       <ReactPaginate
         breakLabel="..."
         nextLabel="next >"
@@ -137,10 +138,11 @@ const ActivityListCard = () => {
         previousLabel="< previous"
         renderOnZeroPageCount={null}
         containerClassName= "pagegination"
-        pageLinkClassName="page-num"
         previousClassName="page-num"
+        nextClassName="page-num"
         activeClassName="activePage"
       />
+      
       </div>
     </div>
   );

@@ -43,7 +43,7 @@ const EditAct = () => {
   //Get each data from id
   useEffect(()=>{
     axios
-    .get(`https://back-end-viv-application.vercel.app/users/me/activities/${id}`, {headers: {authorization: `Bearer ${getToken()}`}})
+    .get(`https://back-end-viv-application.vercel.app/users/me/activities/show/${id}`, {headers: {authorization: `Bearer ${getToken()}`}})
     .then((res) => {
       const {ActType,hour,minute,date,description } = res.data
       setState({...state,ActType,hour,minute,date,description })
@@ -128,8 +128,8 @@ const EditAct = () => {
         </div>
 
         <div className="btn2">
-        <input type="submit" value="Save" />
-        <Link to="/" ><input type="submit" value="Cancel" /></Link>
+        <input type="submit" value="Save" style={{cursor: "pointer"}}/>
+        <Link to="/" ><input type="submit" value="Cancel" style={{cursor: "pointer"}}/></Link>
         </div>
       </form>
     </div>
